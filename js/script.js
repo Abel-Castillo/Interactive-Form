@@ -147,7 +147,11 @@ $(`button[type="submit"]`).click(function(e) {
     $(`.shirt legend`).css("color", "red");
   }
   //check if payment option picked
-  if ($("#payment").val() !== "credit card" && $(this).val() !== "bitcoin") {
+  if (
+    $("#payment").val() !== "credit card" &&
+    $("#payment").val() !== "bitcoin" &&
+    $("#payment").val() !== "paypal"
+  ) {
     e.preventDefault();
     $("#payment").css("border-color", "red");
     $(`[for="payment"]`).css("color", "red");
