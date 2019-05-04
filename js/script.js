@@ -158,15 +158,15 @@ $(`button[type="submit"]`).click(function(e) {
   }
   //if picked credit card check for valid fields
   if ($("#payment").val() === "credit card") {
-    if (!/\d{13,16}/.test($("#cc-num").val())) {
+    if (!/^\d{13,16}$/.test($("#cc-num").val())) {
       e.preventDefault();
       $("#cc-num").css("border-color", "red");
     }
-    if (!/\d{5}/.test($("#zip").val())) {
+    if (!/^\d{5}$/.test($("#zip").val())) {
       e.preventDefault();
       $("#zip").css("border-color", "red");
     }
-    if (!/\d{3}/.test($("#cvv").val())) {
+    if (!/^\d{3}$/.test($("#cvv").val())) {
       e.preventDefault();
       $("#cvv").css("border-color", "red");
     }
@@ -199,5 +199,13 @@ $("#name").on("keyup", e => {
     $(`[for="name"] p`).remove();
     $("#name").css("border-color", "red");
     $(`[for="name"]`).append(`<p style="color: red;">Please Input a name</p>`);
+  }
+});
+//check for Register activities if user deselects an activity
+
+$(".activities input").on("change", () => {
+  $(".activities legend").css("color", "#184f68");
+  if (total === 0) {
+    $(".activities legend").css("color", "red");
   }
 });
